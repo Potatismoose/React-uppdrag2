@@ -1,9 +1,10 @@
-
+import React from 'react'
+import NavigationDesktop from './navigationdesktop/NavigationDesktop'
 
 export const Navigation = () => {
   return (
-    <div>
-      <button>Hem</button>
-    </div>
+    <React.Fragment>
+      <NavigationDesktop />
+    </React.Fragment>
   )
 }
