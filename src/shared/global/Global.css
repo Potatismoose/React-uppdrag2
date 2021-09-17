@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap');
+
+:root{
+  /* FONTS */
+--font-family: "lato", sans-serif;
+--font-weight-bold: "700";
+--font-weight-regular: "400";
+--font-weight-thin: "400";
+
+/* COLORS */
+--main-yellow: #ffcd00;
+--dark-grey: #222;
+--btn-grey: #555;
+--card-footer: #994400;
+--btn-border: grey;
+--black: black;
+--almost-white: #ededed;
+--light-grey: #cecece
+
+}
+
+body{
+  background-color: var(--dark-grey);
+  margin: 0;
+  padding: 0;
+}
+
+img{
+  max-width: 100%;
+}
+
+*, *::before, *::after{
+  box-sizing: border-box;
+}

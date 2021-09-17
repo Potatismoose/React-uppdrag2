@@ -1,10 +1,12 @@
 const fourOFour = ""
 const home ="/"
-const contact ="/contact"
+const pokedex ="/pokedex"
+const pokemonInfo ="/pokemoninfo"
 
 
 export default{
   fourOFour,
   home,
-  contact
+  pokedex,
+  pokemonInfo
 }

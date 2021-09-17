@@ -1,11 +1,15 @@
 import {Routes} from "./routes/Routes"
 import {Navigation} from "./components/navigation/Navigation"
+import './App.css'
+
 
 function App() {
   return (
-    <Routes>
-      <Navigation />
-    </Routes>
+    <div className="wrapper">
+      <Routes>
+        <Navigation />
+      </Routes>
+    </div>
   );
 }
 
