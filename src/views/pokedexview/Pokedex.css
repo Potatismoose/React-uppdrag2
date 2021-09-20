@@ -11,3 +11,9 @@
   color: var(--almost-white)
 }
 
+
+.pokemonNavigation{
+  display: flex;
+  justify-content:center;
+}
+
