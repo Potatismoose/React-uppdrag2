@@ -4,7 +4,7 @@ import './HomeView.css'
 
 export const HomeView = () => {
   const location = useLocation()
-  const [lastpage, setLastpage] = useState(location.state == "/" ? "/home" : location.state)
+  const [lastpage] = useState(location.state === "/" ? "/home" : location.state)
   
   console.log(location)
   return (

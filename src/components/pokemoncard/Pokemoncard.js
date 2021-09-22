@@ -15,7 +15,7 @@ const idTag = "#"
     return(idTag + id)
   }
 
-  console.log(props.pokemon)
+  
   let name = props.pokemon.name.charAt(0).toUpperCase() + props.pokemon.name.slice(1)
   
   return (
@@ -25,7 +25,8 @@ const idTag = "#"
           <div className="card--header">
           <span>{name}</span>
           <span className="pokemon--hp">
-            Hp 150</span>
+          {props?.pokemon.stats[0].stat.name.charAt(0).toUpperCase() +
+          props?.pokemon.stats[0].stat.name.slice(1)} {props?.pokemon.stats[0].base_stat}</span>
             <span className="pokemon--id">
             {formatId(props?.pokemon.id)}</span>
           </div>

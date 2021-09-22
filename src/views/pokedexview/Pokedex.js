@@ -1,93 +1,97 @@
-import { useState, useContext, useEffect, localStorage} from "react"
+import { useState, useEffect, useContext} from "react"
 import { Pokemoncard } from "../../components/pokemoncard/Pokemoncard"
 import { Favourites } from "../../components/favourites/Favourites"
-import CreateMyContext from "../../shared/global/Context/CreateContext"
+import { OffsetContext } from "../../shared/provider/OffsetProvider"
 import './Pokedex.css'
 import {useLocation} from 'react-router-dom'
-import axios from "axios"
+import PokemonApiService from "../../shared/api/service/PokemonApiService"
 import {PokemonButtonNavigation} from '../../components/pokemonbuttonnavigation/PokemonButtonNavigation'
 
-
 export const Pokedex= () => {
-  const [value, setValue] = useState(0)
-  const [showFavourites, setShowFavourites] = useState(false)
+  const [contextOffsetValue, setContextOffsetValue] = useContext(OffsetContext)
+
+  const [showFavourites] = useState(false)
   const location = useLocation()
-  const [lastpage, setLastpage] = useState(location.state === "/" ? "/home" : location.state)
+  const [lastpage] = useState(location.state === "/" ? "/home" : location.state)
   const [serverResponse, setServerResponse] = useState()
-  const [pokemonInformation, setpokemonInformation] = useState([])
-  const [search, setSearch] = useState()
-  const [searchField, setSearchField] = useState([])
+  const [pokemonInformation, setPokemonInformation] = useState([])
   const [counter, setcounter] = useState(0)
-  let butWhy
+  const [done, setDone] = useState(false)
+  
+
+useEffect(() => {  
+  setPokemonInformation([])
+  fetchDataList()
+}, [contextOffsetValue])
 
 useEffect(() => {
-  fetchDataList(value)
-  console.log(counter)
-}, [value])
-
-useEffect(() => {
-  if(serverResponse != null)
+  
+  if(serverResponse)
   {
-    serverResponse.map((x) => fetchSpecificPokemon(x.url))
-
+    serverResponse.map((pokemon) => fetchSpecificPokemon(pokemon.url))
+    setServerResponse(null)
   }
 }, [serverResponse]);
 
 useEffect(() => {
-  setcounter((counter) => {return counter + 1})
+  
+  pokemonInformation.length >= 15 ? setDone(true) : setDone(false)
+    
 }, [pokemonInformation]);
 
+// useEffect(() => {
+//   setcounter((counter) => {return counter + 1})  
+  
+// }, [pokemonInformation]);
 
-const fetchDataList = async(offsetNo) =>{
+const fetchDataList = async() =>{
+  
   try{
-    const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=30&offset=" + offsetNo)
-    const {results} = response.data
-    // console.log(results)
-    setServerResponse(results)
+    
+    const response = await PokemonApiService.performSearch(
+    PokemonApiService.automatedListSearch(contextOffsetValue))
+    setServerResponse(response.data.results)
+  }
 
-    // console.log(response.data.sprites.other["official-artwork"].front_default)
+  catch(error){
+    console.log("Error retrieving data from server" + error)
+  }
+}
+
+const fetchSpecificPokemon = async(address) =>{
+  
+    let slicedAddress = address.split("pokemon/")
+  
+  
+  try{
+    
+    const response = await PokemonApiService.performSearch(
+      PokemonApiService.searchSinglePokemon(slicedAddress[1]))
+      
+    if(pokemonInformation.length === 15)
+    {
+      setPokemonInformation([response.data])
+    }
+    else{
+      setPokemonInformation((pokemonInformation) => { return [...pokemonInformation, response.data] })
+    }
+    
   }
   catch(error){
     console.log("Error retrieving data from server" + error)
   }
 }
 
-  const fetchSpecificPokemon = async(address) =>{
-
-    try{
-      const response = await axios.get(address)
-      // console.log(response.data)
-      setpokemonInformation((pokemonInformation) => { return[...pokemonInformation, response.data]})
-      // setpokemonInformation(response.data)
-      // console.log(response.data.sprites.other["official-artwork"].front_default)
-    }
-    catch(error){
-      console.log("Error retrieving data from server" + error)
-    }
-  }
-
   return (
       <main className="main">
         <p className="lastpage">Du besökte tidigare {lastpage}</p>
         {showFavourites ? <Favourites /> : null}
-        <input
-          type="text"
-          value={searchField}
-          className="input--field"
-          onChange={(element) => setSearchField((prevItems) =>
-          {return[element.target.value]}
-          )}
-        />
-        (<button onClick={() => console.log(serverResponse)}>
-          Server Response
-        </button>)
-        <button onClick={() => setSearch(true)}>Fetch data </button>
-
-        <CreateMyContext.Provider value={{value, setValue}}>
-
+        
+        
+        <PokemonButtonNavigation />
         <section className="pokecards" >
         {
-          (counter -1) % 30 === 0 ? 
+          done ? 
           pokemonInformation?.map((pokemon) => {
             
           return (<Pokemoncard pokemon={pokemon}/>
@@ -95,12 +99,10 @@ const fetchDataList = async(offsetNo) =>{
             )
           }): null
         }
-        
-
         </section>
 
         <PokemonButtonNavigation />
-        </CreateMyContext.Provider>
+        
       </main>
 
   )
