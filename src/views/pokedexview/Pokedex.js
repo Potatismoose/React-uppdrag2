@@ -7,6 +7,8 @@ import {useLocation} from 'react-router-dom'
 import PokemonApiService from "../../shared/api/service/PokemonApiService"
 import {PokemonButtonNavigation} from '../../components/pokemonbuttonnavigation/PokemonButtonNavigation'
 
+
+
 export const Pokedex= () => {
   const [contextOffsetValue, setContextOffsetValue] = useContext(OffsetContext)
 
@@ -34,8 +36,14 @@ useEffect(() => {
 }, [serverResponse]);
 
 useEffect(() => {
-  
-  pokemonInformation.length >= 15 ? setDone(true) : setDone(false)
+  if(pokemonInformation.length >=15)
+  {
+    pokemonInformation.sort(function(a, b){return a.id-b.id})
+    setDone(true)
+  }
+  else{
+    setDone(false)
+  }
     
 }, [pokemonInformation]);
 
