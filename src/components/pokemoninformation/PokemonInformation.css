@@ -1,0 +1,41 @@
+
+
+
+.info--box{
+  background: var(clr--yellow);
+  max-width: 80ch;
+}
+
+.info--header--id::before{
+  content: "#"
+}
+.info--grid{
+  display: grid;
+  grid-template-areas: "image info"
+                       "image stats"
+                       "image stats"
+                       "image stats"
+                       "footer footer";
+  gap: 1em;
+}
+
+.info--pokemon--image img{
+max-width: 80%;
+}
+
+.info--pokemon--image{
+  grid-area: image;
+
+}
+.info--pokemon--info{
+  font-size: 1.3rem;
+  grid-area: info;
+}
+
+.info--pokemon--stats{
+  grid-area: stats;
+}
+
+.info--pokemon--footer{
+  grid-area: footer;
+}

@@ -49,6 +49,7 @@
 
 .image--container{
   display: flex;
+  align-self: stretch;
   justify-content: center;
 }
 .card--picture{

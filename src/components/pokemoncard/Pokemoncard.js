@@ -30,7 +30,7 @@ const idTag = "#"
             <span className="pokemon--id">
             {formatId(props?.pokemon.id)}</span>
           </div>
-          <div className="image--container">{props?.pokemon ? <img src={props?.pokemon?.sprites.other["official-artwork"].front_default} className="card--picture" alt="pokemon" /> : null}</div>
+          <div className="image--container">{props?.pokemon ? <img src={props?.pokemon?.sprites?.other["official-artwork"]?.front_default} className="card--picture" alt="pokemon" /> : null}</div>
           <div className="stats">
           <span className="stat--item">{
           props?.pokemon.stats[0].stat.name.charAt(0).toUpperCase() +

@@ -1,3 +1,21 @@
 .main{
   color: white;
 }
+
+.info--container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: darkslategray;
+  margin: 1em 0;
+  color: white;
+  padding: 1em;
+}
+
+.info--header{
+  display: flex;
+  justify-content: space-between;
+}
+.info--not--loaded{
+  margin: 1em 0;
+}
