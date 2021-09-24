@@ -44,8 +44,9 @@ export const Pokedex= () => {
           return (<Pokemoncard pokemon={pokemon}/>
           
             )
-          }): <h1>Loading, please wait</h1>
-        }
+          }): <div className="loading--container"><h2 className="info--not--loaded">Loading, please wait</h2>
+          <div className="loader"></div></div>}
+        
         </section>
 
 {done ? <PokemonButtonNavigation /> : null}

@@ -52,7 +52,8 @@ function getDetails(pokemon){
         pokemon={contextPokemon[randomPokemon]} 
         details={getDetails(contextPokemon[randomPokemon])}
       /> 
-      : <h2 className="info--not--loaded">Loading, please wait</h2>}
+      : <div className="loading--container"><h2 className="info--not--loaded">Loading, please wait</h2>
+      <div className="loader"></div></div>}
 
     </div>
       

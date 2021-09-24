@@ -54,7 +54,7 @@ const idTag = "#"
           </div>
         </div>
         <footer className="card--footer">
-        Card footer
+        
         </footer>
       </div>
     </div>

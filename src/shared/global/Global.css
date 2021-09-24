@@ -18,6 +18,9 @@
 --light-grey: #cecece
 
 }
+html{
+  overflow-y: scroll;
+}
 
 body{
   background-color: var(--dark-grey);
