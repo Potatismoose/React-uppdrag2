@@ -14,12 +14,12 @@ export const PokemonChart = ({pokemon, keyvalue}) => {
 
 useEffect(() => {
   if(currentPm != null 
-    && hp == 0 
-    && specialAttack == 0
-    && attack == 0
-    && defence == 0
-    && speed == 0
-    && doneSetting == false)
+    && hp === 0 
+    && specialAttack === 0
+    && attack === 0
+    && defence === 0
+    && speed === 0
+    && doneSetting === false)
   {
     setSpecialAttack(currentPm?.stats[3]?.base_stat)
     setHp(currentPm?.stats[0]?.base_stat)
@@ -34,11 +34,11 @@ useEffect(() => {
 }, [currentPm, hp])
 
 useEffect(() => {
-  if( hp != 0 
-    && specialAttack != 0
-    && attack != 0
-    && defence != 0
-    && speed != 0)
+  if( hp !== 0 
+    && specialAttack !== 0
+    && attack !== 0
+    && defence !== 0
+    && speed !== 0)
   {
     setDoneSetting(true)
   }
@@ -59,12 +59,6 @@ useEffect(() => {
       setDoneSetting(false)
     }
 }, [])
-
-
-
-
-
-console.log(pokemon.stats)
 
   return (
     <div className="chart" key={keyvalue}>

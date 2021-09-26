@@ -5,7 +5,6 @@ import './NavButton.css'
 export const NavButton = (props) => {
   const history = useHistory()
   const location = useLocation()
- console.log(history.push)
   return (
     <li 
     className="nav-btn" 
