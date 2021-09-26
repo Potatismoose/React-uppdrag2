@@ -4,7 +4,7 @@ const pokedex = "/pokedex"
 const details = "/details"
 
 
-export default{
+export default {
   fourOFour,
   home,
   pokedex,

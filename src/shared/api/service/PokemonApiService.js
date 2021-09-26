@@ -1,6 +1,6 @@
 import http from '../PokemonApi'
 const numberOfResultsToGet = 898
-const numberOfResultsToShow = 54
+const numberOfResultsToShow = 108
 
 const searchSinglePokemon = (pokemonNumberOrName) => {
   

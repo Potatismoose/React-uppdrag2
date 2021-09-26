@@ -7,7 +7,7 @@ import { numberOfResultsToShow } from "../../shared/api/service/PokemonApiServic
 export const PokemonButtonNavigation = () => {
  
   
-  const [offsetObject, doneObject] = useContext(OffsetContext)
+  const [offsetObject] = useContext(OffsetContext)
   const {offset} = offsetObject
   const [contextOffsetValue, setContextOffsetValue] = offset
   

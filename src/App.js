@@ -17,52 +17,26 @@ function App() {
 
   useEffect(() => {  
     setContextPokemon([])
+    
+    const fetchDataList = async() =>{
+  
+      try{
+        
+        const response = await PokemonApiService.performSearch(
+        PokemonApiService.automatedListSearch(contextOffsetValue))
+        setServerResponse(response.data.results)
+      }
+    
+      catch(error){
+        console.log("Error retrieving data from server" + error)
+      }
+    }
+
     fetchDataList()
   }, [contextOffsetValue])
 
   useEffect(() => {
-    if(serverResponse)
-    {
-      serverResponse.map((pokemon) => fetchSpecificPokemon(pokemon.url))
-      setServerResponse(null)
-    }
-  }, [serverResponse]);
-
-  useEffect(() => {
-    if(contextPokemon.length >= numberOfResultsToGet)
-    {
-      contextPokemon.sort(function(a, b){return a.id-b.id})
-      contextPokemon.map(pokemon => fetchDetails(pokemon.species.url))
-    }   
-  }, [contextPokemon]);
-
-  useEffect(() => {
-    
-    if(contextDetailsPokemon.length >= numberOfResultsToGet)
-    {      
-      setDone(true)
-    }
-    else{
-      setDone(false)
-    }    
-  }, [contextDetailsPokemon]);
-
-
-  const fetchDataList = async() =>{
-  
-    try{
-      
-      const response = await PokemonApiService.performSearch(
-      PokemonApiService.automatedListSearch(contextOffsetValue))
-      setServerResponse(response.data.results)
-    }
-  
-    catch(error){
-      console.log("Error retrieving data from server" + error)
-    }
-  }
-  
-  const fetchSpecificPokemon = async(address) =>{
+    const fetchSpecificPokemon = async(address) =>{
     
       let slicedAddress = address.split("pokemon/")
       
@@ -85,28 +59,62 @@ function App() {
     }
   }
 
-  const fetchDetails = async(address) =>{
-    
-    let slicedAddress = address.split("pokemon-species/")
-    
-  try{
-    
-    const response = await PokemonApiService.performSearch(
-      PokemonApiService.searchDetailedSearch(slicedAddress[1]))
-      
-    if(contextDetailsPokemon.length === numberOfResultsToGet)
+    if(serverResponse)
     {
-      setContextDetailsPokemon([response.data])
+      serverResponse.map((pokemon) => fetchSpecificPokemon(pokemon.url))
+      setServerResponse(null)
+    }
+  }, [serverResponse]);
+
+  useEffect(() => {
+
+    const fetchDetails = async(address) =>{
+    
+      let slicedAddress = address.split("pokemon-species/")
+      
+    try{
+      
+      const response = await PokemonApiService.performSearch(
+        PokemonApiService.searchDetailedSearch(slicedAddress[1]))
+        
+      if(contextDetailsPokemon.length === numberOfResultsToGet)
+      {
+        setContextDetailsPokemon([response.data])
+      }
+      else{
+        setContextDetailsPokemon((contextDetailsPokemon) => { return [...contextDetailsPokemon, response.data] })
+      }
+      
+    }
+    catch(error){
+      console.log("Error retrieving details from server" + error)
+    }
+  }
+  
+    if(contextPokemon.length >= numberOfResultsToGet)
+    {
+      contextPokemon.sort(function(a, b){return a.id-b.id})
+      contextPokemon.map(pokemon => fetchDetails(pokemon.species.url))
+    }   
+  }, [contextPokemon]);
+
+  useEffect(() => {
+    
+    if(contextDetailsPokemon.length >= numberOfResultsToGet)
+    {      
+      setDone(true)
     }
     else{
-      setContextDetailsPokemon((contextDetailsPokemon) => { return [...contextDetailsPokemon, response.data] })
-    }
-    
-  }
-  catch(error){
-    console.log("Error retrieving details from server" + error)
-  }
-}
+      setDone(false)
+    }    
+  }, [contextDetailsPokemon]);
+
+
+  
+  
+  
+
+  
   
   return (
     <div className="wrapper">

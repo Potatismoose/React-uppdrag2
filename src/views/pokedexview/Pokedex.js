@@ -12,8 +12,8 @@ export const Pokedex= () => {
   const [offsetObject, doneObject] = useContext(OffsetContext)
   const {offset} = offsetObject
   const {doneState} = doneObject
-  const [contextOffsetValue, setContextOffsetValue] = offset
-  const [done, setDone] = doneState
+  const [contextOffsetValue] = offset
+  const [done] = doneState
   const [pm] = useContext(PokemonContext)
   const {pokemonList} = pm
   const [contextPokemon] = pokemonList
@@ -46,7 +46,7 @@ function getPokemonsToDisplay()
         {
           done ? getPokemonsToDisplay().map(pm => 
             {
-              return (<Pokemoncard cardkey={Math.random()} pokemon={pm}/>)
+              return (<Pokemoncard key={Math.random()} pokemon={pm}/>)
             })
 
           : <div className="loading--container"><h2 className="info--not--loaded">Loading, please wait</h2>

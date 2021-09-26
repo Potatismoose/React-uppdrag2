@@ -1,5 +1,4 @@
 import React,{useState, useEffect} from 'react'
-import pokemonAPI from '../../shared/api/PokemonApi'
 import './PokemonChart.css'
 
 export const PokemonChart = ({pokemon, keyvalue}) => {

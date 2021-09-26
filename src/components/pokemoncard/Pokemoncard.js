@@ -23,7 +23,7 @@ const idTag = "#"
   
   return (
     
-    <div key={props.cardkey} className="pokemoncard" onClick={() => history.push(details, props.pokemon.id)}>
+    <div key={Math.random()} className="pokemoncard" onClick={() => history.push(details, props.pokemon.id)}>
       
       <div className="pokemon--container">
         <div className="about--pokemon">

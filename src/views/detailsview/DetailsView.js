@@ -11,12 +11,12 @@ import { PokemonInformation } from "../../components/pokemoninformation/PokemonI
 export const DetailsView = () => {
   const history  = useHistory()
   const location = useLocation()
-  const [pokemonId] = useState(location.state)
+  const [pokemonId, setPokemonId] = useState(location.state)
   const [pm, dl] = useContext(PokemonContext)
   const {pokemonList} = pm
-  const [contextPokemon, setContextPokemon] = pokemonList
+  const [contextPokemon] = pokemonList
   const {detailsList} = dl
-  const [contextDetailsPokemon, setContextDetailsPokemon] = detailsList
+  const [contextDetailsPokemon] = detailsList
   const [clickedPokemon, setClickedPokemon] = useState()
   const [clickedPokemonDetails, setClickedPokemonDetails] = useState(null)
   const [readyToRender, setReadyToRender] = useState(false)
@@ -29,6 +29,7 @@ export const DetailsView = () => {
   useEffect(() => {
    if(pokemonId != null)
    {
+     setReadyToRender(false)
      setClickedPokemon(contextPokemon.find((pm) => {return pm.id === pokemonId}))
    }
    
@@ -51,7 +52,7 @@ export const DetailsView = () => {
 function getDetails(pokemon){
   
   return contextDetailsPokemon.find(p => {
-    return p.name == pokemon.species.name
+    return p.name === pokemon.species.name
     
   })
 }
@@ -62,15 +63,18 @@ function getDetails(pokemon){
       
       <h1>Pokemon details</h1><button className="random--btn" onClick={() => history.goBack()}>Back to pokedex</button>
       </div>
-      <div className="info--container">
-      {readyToRender ?
-      <PokemonInformation keyValue={Math.random()} pokemon={clickedPokemon} details={clickedPokemonDetails}/> : null
-      }
       
-      
-      
-
+      <div className="info--container detailsview--pokemon--container">
+        <div className="arrow" onClick={() => setPokemonId(pokemonId-1 < 1 ? 898 : pokemonId-1)}><i className="fas fa-chevron-left arrow--size"></i></div> 
+        
+              {readyToRender ?
+        <PokemonInformation keyValue={Math.random()} pokemon={clickedPokemon} details={clickedPokemonDetails}/> : null
+        }
+        
+        
+        <div className="arrow" onClick={() => setPokemonId(pokemonId+1 > 898 ? 1 : pokemonId+1)}><i className="fas fa-chevron-right arrow--size"></i></div> 
       </div>
+      
       
     </div>
   )

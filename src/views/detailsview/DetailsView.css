@@ -1,0 +1,22 @@
+
+.arrow--size{
+  font-size: 8rem;
+  color: var(--card-footer);
+  opacity: 0.3;
+  transition: opacity 300ms ease-in-out;
+  
+}
+
+.arrow--size:hover{
+  opacity: 1;
+}
+
+.detailsview--pokemon--container{
+  
+  display: flex;
+  justify-content: space-between;
+}
+
+.arrow{
+  align-self: center;
+}

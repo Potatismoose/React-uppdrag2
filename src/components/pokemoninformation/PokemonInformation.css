@@ -34,18 +34,27 @@
 }
 
 .info--pokemon--image img{
-max-width: 100%;
-min-width: 200px;
+max-width: 80%;
+
+
 }
 
 .info--pokemon--image{
   grid-area: image;
+  display: flex;
+  justify-content: center;
+  min-width: 395px;
+  
 
 }
 .info--pokemon--info{
   padding: 1em;
   font-size: 1.3rem;
   grid-area: info;
+  border-radius: 10px;
+  background: var(--btn-grey);
+  border: 2px solid var(--btn-border)
+  
 }
 
 .info--pokemon--stats{

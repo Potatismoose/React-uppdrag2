@@ -14,9 +14,9 @@ export const HomeView = () => {
   const [randomPokemon, setrandomPokemon] = useState(null)
   const [pm, dl] = useContext(PokemonContext)
   const {pokemonList} = pm
-  const [contextPokemon, setContextPokemon] = pokemonList
+  const [contextPokemon] = pokemonList
   const {detailsList} = dl
-  const [contextDetailsPokemon, setContextDetailsPokemon] = detailsList
+  const [contextDetailsPokemon] = detailsList
   const [off, ds] = useContext(OffsetContext)
   const {doneState} = ds
   const [done] = doneState
@@ -43,7 +43,7 @@ function calculateRandomPokemon(){
   }, [randomPokemon])
 
 function getDetails(pokemon){
-  return contextDetailsPokemon.find(p => p.name == pokemon.name )
+  return contextDetailsPokemon.find(p => p.name === pokemon.name )
 }
 
   return (
