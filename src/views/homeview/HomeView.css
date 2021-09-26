@@ -1,8 +1,6 @@
 
 
-.main{
-  color: white;
-}
+
 .loading--container{
   display:flex;
   flex-direction: column;
@@ -24,11 +22,21 @@
   100% { transform: rotate(360deg); }
 }
 
+.yellow--top{
+    color: black;
+    min-height: 50px;
+    background: var(--main-yellow);
+    padding: 1em;
+    font-size: 1.1rem;
+    text-align: center;
+    border-radius: 10px;
+}
+
 .info--container{
   width: 100%;
   display: flex;
   justify-content: center;
-  background: darkslategray;
+  
   margin: 1em 0;
   color: white;
   padding: 1em;
@@ -40,4 +48,25 @@
 }
 .info--not--loaded{
   margin: 1em 0;
+}
+
+.random--btn{
+  
+  padding: 0.5em 1.4em;
+  font-size: 1.4rem;
+  background: var(--btn-grey);
+  color: var(--almost-white);
+  border-radius: 10px;
+  box-shadow: 0px 0px 0px transparent;
+  border: 2px solid var(--btn-border);
+  text-shadow: 0px 0px 0px transparent;
+  transition: color 250ms ease-in-out;
+}
+
+.random--btn:hover{
+  cursor: pointer;
+  color: var(--main-yellow);
+  
+  
+  
 }

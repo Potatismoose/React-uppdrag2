@@ -31,9 +31,8 @@ function App() {
   useEffect(() => {
     if(contextPokemon.length >= numberOfResultsToGet)
     {
-     contextPokemon.sort(function(a, b){return a.id-b.id})
-     
-    contextPokemon.map(pokemon => fetchDetails(pokemon.species.url))
+      contextPokemon.sort(function(a, b){return a.id-b.id})
+      contextPokemon.map(pokemon => fetchDetails(pokemon.species.url))
     }   
   }, [contextPokemon]);
 

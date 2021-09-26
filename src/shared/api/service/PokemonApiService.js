@@ -1,5 +1,6 @@
 import http from '../PokemonApi'
 const numberOfResultsToGet = 898
+const numberOfResultsToShow = 54
 
 const searchSinglePokemon = (pokemonNumberOrName) => {
   
@@ -20,4 +21,4 @@ const performSearch = (endpoint) => {
 }
 
 export default {performSearch, searchSinglePokemon, automatedListSearch, searchDetailedSearch}
-export {numberOfResultsToGet}
+export {numberOfResultsToGet, numberOfResultsToShow}

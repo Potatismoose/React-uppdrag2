@@ -2,7 +2,7 @@ import { useContext } from "react"
 import React from 'react'
 import './PokemonButtonNavigation.css'
 import { OffsetContext } from "../../shared/provider/OffsetProvider"
-import { numberOfResultsToGet } from "../../shared/api/service/PokemonApiService"
+import { numberOfResultsToShow } from "../../shared/api/service/PokemonApiService"
 
 export const PokemonButtonNavigation = () => {
  
@@ -10,8 +10,9 @@ export const PokemonButtonNavigation = () => {
   const [offsetObject, doneObject] = useContext(OffsetContext)
   const {offset} = offsetObject
   const [contextOffsetValue, setContextOffsetValue] = offset
- console.log(numberOfResultsToGet)
+  
  
+  
   
   return (
     <div className="pokemonNavigation">
@@ -20,18 +21,24 @@ export const PokemonButtonNavigation = () => {
       <button className="pokemon--nav--button" 
       
       onClick={
-        () => setContextOffsetValue((contextOffsetValue -numberOfResultsToGet < 0 ? 0 : contextOffsetValue -numberOfResultsToGet
-        ))}>Previous
+        () => setContextOffsetValue(
+          contextOffsetValue -numberOfResultsToShow < 0 ?
+           0 : contextOffsetValue -numberOfResultsToShow
+        )}>Previous
       </button>
 
       <button className="pokemon--nav--button" 
       
       onClick={
-        () => setContextOffsetValue((contextOffsetValue + numberOfResultsToGet) > 1118 ? 1118 : contextOffsetValue+numberOfResultsToGet
-        )}>Next
+        () => setContextOffsetValue(
+          contextOffsetValue + numberOfResultsToShow > 898 ? 
+          898 : contextOffsetValue+numberOfResultsToShow)
+        
+        }>Next
       </button>
 
-      <div className="valueText"><p>Visar pokemon {contextOffsetValue+1} - {contextOffsetValue+numberOfResultsToGet} </p></div>
+      <div className="valueText"><p>Visar pokemon:  
+        {contextOffsetValue+1} - {contextOffsetValue+numberOfResultsToShow} </p></div>
       
     </div>
   )

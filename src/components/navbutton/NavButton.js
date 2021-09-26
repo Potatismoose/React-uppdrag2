@@ -5,16 +5,17 @@ import './NavButton.css'
 export const NavButton = (props) => {
   const history = useHistory()
   const location = useLocation()
- 
+ console.log(history.push)
   return (
     <li 
     className="nav-btn" 
-    onClick={()=>history.push(
-      {pathname: props.path, 
-        state: location.pathname 
-      })}
+    onClick={()=>history.push(props.path, location.pathname)
+      }
     >
-    
+{/*     
+    {pathname: props.path, 
+        state: location.pathname 
+      } */}
     <span className="menulink">
       {props.buttonTxt}
     </span>

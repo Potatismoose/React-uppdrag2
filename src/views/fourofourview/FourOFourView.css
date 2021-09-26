@@ -1,0 +1,17 @@
+.four0four
+{
+  color: var(--almost-white);
+  text-align: center;
+}
+
+.four0four img{
+  max-width: 40%;
+}
+
+@media only screen and (max-width: 1024px)
+{
+  .yellow--top h1{
+    font-size: 1.3rem;
+    
+  } 
+}

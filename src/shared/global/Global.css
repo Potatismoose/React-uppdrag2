@@ -11,11 +11,15 @@
 --main-yellow: #ffcd00;
 --dark-grey: #222;
 --btn-grey: #555;
+--chart-background: linear-gradient(45deg,#666, #333);
 --card-footer: #994400;
+--dark-brown-hover: #662200;
 --btn-border: grey;
 --black: black;
 --almost-white: #ededed;
---light-grey: #cecece
+--light-grey: #cecece;
+--chart: linear-gradient(#ffcd00, #994400);
+--btn-hover-fx: linear-gradient(45deg,#8899ff, #aabb22, #ddbb55, #994400);
 
 }
 html{
@@ -34,4 +38,14 @@ img{
 
 *, *::before, *::after{
   box-sizing: border-box;
+}
+
+@media only screen and (max-width: 1024px){
+.footer{
+  min-width: 100%;
+  
+  margin: 0 0 1em 0;
+}
+
+  
 }
