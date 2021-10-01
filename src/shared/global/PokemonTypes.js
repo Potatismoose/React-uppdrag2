@@ -9,7 +9,7 @@ const types = {
   poison:"#aa5599",
   ground:"#ddbb55",
   flying:"#8899ff",
-  physics:"#ff5599",
+  psychic:"#ff5599",
   bug:"#aabb22",
   rock:"#bbaa66",
   ghost:"#6666bb",

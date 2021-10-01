@@ -1,10 +1,18 @@
 
 .arrow--size{
-  font-size: 8rem;
-  color: var(--card-footer);
-  opacity: 0.3;
+  font-size: 3rem;
+  color: var(--main-yellow);
+  opacity: 0.6;
   transition: opacity 300ms ease-in-out;
   
+}
+
+@media only screen and (max-width: 1024px){
+  .arrow--size{
+    font-size: 3rem;
+  }
+
+
 }
 
 .arrow--size:hover{
@@ -12,9 +20,9 @@
 }
 
 .detailsview--pokemon--container{
-  
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
 .arrow{

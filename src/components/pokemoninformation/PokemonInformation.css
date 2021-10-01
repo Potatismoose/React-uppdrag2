@@ -2,13 +2,14 @@
 
 
 .info--box{
-  
+  margin-top: 2em;
   max-width: 100ch;
-  padding: 1em
+  padding: 0 1em 1em;
   
 }
 .info--header{
-  margin-left: 0.5em;
+  
+  
 }
 
 .info--header--name{
@@ -38,7 +39,21 @@ max-width: 80%;
 
 
 }
+.type{
+  display: inline-block;
+  padding: 0.2em 1.4em;
+  border-radius: 10px;
+  color: #000;
+  margin: 0 1em 0.5em 0; 
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
 
+.white--text{
+  color: #eee;
+  
+}
 .info--pokemon--image{
   grid-area: image;
   display: flex;
@@ -63,15 +78,25 @@ max-width: 80%;
 
 .info--pokemon--footer{
   grid-area: footer;
+  display: flex;
+  justify-content: left;
+  
+  
 }
 
 
 
 @media only screen and (max-width: 1024px)
 {
+  .type{
+    margin: 0 0.5em 0.5em 0.5em; 
+  }
+
+
   .info--header{
     display: flex;
     justify-content: center;
+    
   }
   .info--grid{
     
@@ -89,7 +114,12 @@ max-width: 80%;
   margin-right: auto;
   display: block;
 
-    }
+  }
+
+  .info--pokemon--footer{    
+    justify-content: center;
+    
+  }
 }
 
 

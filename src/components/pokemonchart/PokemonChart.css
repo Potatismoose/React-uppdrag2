@@ -6,7 +6,7 @@
   border-bottom: 2px solid var(--btn-border);
   padding: 0.3em;
   background: var(--chart-background);
-  overflow: hidden;
+  
   min-width: 100%;
 }
 
@@ -51,27 +51,27 @@
 }
 .special--attack--bar{
   height: 0;
-  transition: height 1s cubic-bezier(.8,.45,.25,1.64) 0.75s;
+  transition: height 500ms cubic-bezier(.8,.45,.25,1.64) 0.35s;
 }
 
 .hp--bar{
   height: 0;
-  transition: height 1s cubic-bezier(.8,.45,.25,1.64) 0.8s;
+  transition: height 800ms cubic-bezier(.8,.45,.25,1.64) 0.4s;
 }
 
 .attack--bar{
   height: 0;
-  transition: height 1s cubic-bezier(.8,.45,.25,1.64) 1s;
+  transition: height 500ms cubic-bezier(.8,.45,.25,1.64) 500ms;
 }
 
 .defence--bar{
   height: 0;
-  transition: height 1s cubic-bezier(.8,.45,.25,1.64) 0.9s;
+  transition: height 500ms cubic-bezier(.8,.45,.25,1.64) 0.6s;
 }
 
 .speed--bar{
   height: 0;
-  transition: height 1s cubic-bezier(.8,.45,.25,1.64) 0.65s;
+  transition: height 900ms cubic-bezier(.8,.45,.25,1.64) 0.25s;
 }
 
 .second--ul{

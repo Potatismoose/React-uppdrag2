@@ -64,15 +64,20 @@ function getDetails(pokemon){
       <h1>Pokemon details</h1><button className="random--btn" onClick={() => history.goBack()}>Back to pokedex</button>
       </div>
       
-      <div className="info--container detailsview--pokemon--container">
-        <div className="arrow" onClick={() => setPokemonId(pokemonId-1 < 1 ? 898 : pokemonId-1)}><i className="fas fa-chevron-left arrow--size"></i></div> 
+      <div className="detailsview--pokemon--container">
         
-              {readyToRender ?
-        <PokemonInformation keyValue={Math.random()} pokemon={clickedPokemon} details={clickedPokemonDetails}/> : null
+        
+        {readyToRender ?
+          <PokemonInformation keyValue={Math.random()} pokemon={clickedPokemon} details={clickedPokemonDetails}/> 
+          : null
         }
+        <div className="pokemon--change--nav">
+        <div className="arrow" onClick={() => setPokemonId(pokemonId-1 < 1 ? 898 : pokemonId-1)}><i className="fas fa-chevron-left arrow--size"></i></div> 
+          <div className="arrow" onClick={() => setPokemonId(pokemonId+1 > 898 ? 1 : pokemonId+1)}><i className="fas fa-chevron-right arrow--size"></i></div>
+            
+        </div>
         
-        
-        <div className="arrow" onClick={() => setPokemonId(pokemonId+1 > 898 ? 1 : pokemonId+1)}><i className="fas fa-chevron-right arrow--size"></i></div> 
+         
       </div>
       
       

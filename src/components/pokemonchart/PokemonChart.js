@@ -39,7 +39,10 @@ useEffect(() => {
     && defence !== 0
     && speed !== 0)
   {
-    setDoneSetting(true)
+    setTimeout(() => {
+      setDoneSetting(true)
+    }, 300);
+    
   }
 }, [speed, hp, specialAttack, attack, defence])
 
